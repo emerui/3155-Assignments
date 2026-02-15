@@ -1,3 +1,6 @@
+from xxlimited_35 import Null
+
+
 class BankAccount:
     bank_title = "UNC Charlotte Banks"
     def __init__(self, customer_name, current_balance, minimum_balance):
@@ -19,6 +22,35 @@ class BankAccount:
         print("\n Current balance: ", self.current_balance)
         print("\nYou cannot go below: ", self.minimum_balance)
         print("\nYou are banking with: ", self.bank_title)
+
+class SavingsAccount(BankAccount):
+    #savings account needs interest
+    def __init__(self, customer_name, current_balance, minimum_balance, interest):
+        super.__init__(customer_name, current_balance, minimum_balance)
+        self.interest = interest
+
+    def apply_interest(self):
+        interest = self.interest * self.current_balance
+        self.current_balance += interest
+        print("\nInterested added! New balance: ", self.current_balance, "\n")
+class CheckingAccount(BankAccount):
+    #needs transfer limit
+    def __init__(self, customer_name, current_balance, minimum_balance, limit):
+        super.__init__(customer_name, current_balance, minimum_balance)
+        self.limit = limit
+        self.transfer_made = 0
+
+    def withdraw(self, withdraw):
+        if self.transfer_made >= self.limit:
+            print("\nAccount reached limit for transfers made\n")
+            return
+        if self.current_balance - withdraw < self.minimum_balance:
+            print("\nYou don't have enough money\n")
+            return
+        self.current_balance = self.current_balance - withdraw
+        self.transfer_made+=1
+
+
 
 student_a = BankAccount("Student A", 100, 10)
 student_b = BankAccount("Student B", 90, 0)
