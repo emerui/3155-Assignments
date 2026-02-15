@@ -34,7 +34,6 @@ class SavingsAccount(BankAccount):
         self.current_balance += interest
         print("\nInterested added! New balance: ", self.current_balance, "\n")
 class CheckingAccount(BankAccount):
-    #needs transfer limit
     def __init__(self, customer_name, current_balance, minimum_balance, limit):
         super.__init__(customer_name, current_balance, minimum_balance)
         self.limit = limit
