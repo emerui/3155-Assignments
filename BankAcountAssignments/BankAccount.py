@@ -22,7 +22,7 @@ class BankAccount:
             print("\n",self.customer_name, ", money has been withdrawn: ", withdraw)
 
     def print_customer_information(self):
-        print("\nName: ", self.customer_name)
-        print("\n Current balance: ", self.current_balance)
+        print("\nName: ", self.customer_name, "\n")
+        print("\nCurrent balance: {:.2f}".format(self.current_balance), "\n")
         print("\nYou cannot go below: ", self.minimum_balance)
         print("\nYou are banking with: ", self.bank_title)

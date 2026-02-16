@@ -18,4 +18,4 @@ class CheckingAccount(BankAccount):
         print("\n", self.customer_name, "you have withdrawn money:", withdraw)
     def print_customer_information(self):
         super().print_customer_information()
-        print("\n You may only transfer money", self.limit, "times. You have transferred", self.transfer_made, "time(s).\n")
+        print("\n You may only transfer money", self.limit, "time(s). You have transferred", self.transfer_made, "time(s).\n")
