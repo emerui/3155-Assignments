@@ -12,12 +12,14 @@ class BankAccount:
 
     def deposit(self, add):
         self.current_balance = self.current_balance + add
+        print("\n",self.customer_name, ", money has been deposited: ", add)
 
     def withdraw(self, withdraw):
         if self.current_balance-withdraw < self.minimum_balance:
-            print("\nyou don't have enough money\n")
+            print("\n",self.customer_name, "you don't have enough money to widthdraw\n")
         else:
             self.current_balance = self.current_balance - withdraw
+            print("\n",self.customer_name, ", money has been withdrawn: ", withdraw)
 
     def print_customer_information(self):
         print("\nName: ", self.customer_name)

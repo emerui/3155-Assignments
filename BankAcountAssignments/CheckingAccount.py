@@ -2,7 +2,7 @@ from BankAccount import BankAccount
 
 class CheckingAccount(BankAccount):
     def __init__(self, customer_name, current_balance, minimum_balance, account_number, routing_number,limit):
-        super.__init__(customer_name, current_balance, minimum_balance, account_number, routing_number)
+        super().__init__(customer_name, current_balance, minimum_balance, account_number, routing_number)
         self.limit = limit
         self.transfer_made = 0
 
@@ -15,3 +15,7 @@ class CheckingAccount(BankAccount):
             return
         self.current_balance = self.current_balance - withdraw
         self.transfer_made+=1
+        print("\n", self.customer_name, "you have withdrawn money:", withdraw)
+    def print_customer_information(self):
+        super().print_customer_information()
+        print("\n You may only transfer money", self.limit, "times. You have transferred", self.transfer_made, "time(s).\n")
