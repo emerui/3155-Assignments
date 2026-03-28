@@ -5,7 +5,10 @@ from ..models import models, schemas
 
 def create(db: Session, order_detail):
     db_order_detail = models.OrderDetail(
-        amount = order_detail.amount
+        amount = order_detail.amount,
+        sandwich_id = order_detail.sandwich_id,
+        order_id = order_detail.order_id
+
     )
     db.add(db_order_detail)
     db.commit()
