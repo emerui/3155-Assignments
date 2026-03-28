@@ -4,7 +4,9 @@ from ..models import models, schemas
 
 
 def create(db: Session, order_detail):
-    db_order_detail = models.OrderDetail()
+    db_order_detail = models.OrderDetail(
+        amount = order_detail.amount
+    )
     db.add(db_order_detail)
     db.commit()
     db.refresh(db_order_detail)

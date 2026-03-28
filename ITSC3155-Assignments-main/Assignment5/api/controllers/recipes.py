@@ -3,7 +3,9 @@ from fastapi import HTTPException, status, Response, Depends
 from ..models import models, schemas
 
 def create (db:Session, recipe):
-    db_recipe = models.Recipe()
+    db_recipe = models.Recipe(
+        amount = recipe.amount
+    )
     db.add(db_recipe)
     db.commit()
     db.refresh(db_recipe)

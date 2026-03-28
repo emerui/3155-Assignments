@@ -4,6 +4,7 @@ from ..models import models, schemas
 
 def create (db:Session, resource):
     db_resource = models.Resource(
+        amount = resource.amount,
         item = resource.item
     )
     db.add(db_resource)

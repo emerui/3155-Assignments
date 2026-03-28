@@ -36,7 +36,7 @@ def create_recipe(recipe: schemas.RecipeCreate, db: Session = Depends(get_db)):
 @app.post("/resources/", response_model=schemas.Resource, tags=["Resources"])
 def create_resource(resource: schemas.ResourceCreate, db: Session = Depends(get_db)):
     return resources.create(db=db, resource=resource)
-@app.post("/order_details/", response_model=schemas.OrderDetail, tags=["Orders"])
+@app.post("/order_details/", response_model=schemas.OrderDetail, tags=["OrderDetails"])
 def create_order_detail(order_detail: schemas.OrderDetailCreate, db: Session = Depends(get_db)):
     return order_details.create(db=db, order_detail=order_detail)
 
@@ -108,7 +108,7 @@ def update_one_recipe(recipe_id: int, recipe: schemas.RecipeUpdate, db: Session 
     if recipe_db is None:
         raise HTTPException(status_code=404, detail="User not found")
     return recipes.update(db=db, recipe=recipe, recipe_id=recipe_id)
-@app.put("/resources/{resource_id}", response_model=schemas.Resource, tags=["Resource"])
+@app.put("/resources/{resource_id}", response_model=schemas.Resource, tags=["Resources"])
 def update_one_resource(resource_id: int, resource: schemas.ResourceUpdate, db: Session = Depends(get_db)):
     resource_db = resources.read_one(db, resource_id=resource_id)
     if resource_db is None:
